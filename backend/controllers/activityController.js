@@ -9,9 +9,7 @@ const ActivitiesCollection = db.collection("activities");
 // return all activites from database
 const getActivities = async (_, res) => {
     const activities = await ActivitiesCollection.find(
-        {
-            content: { $ne: "test" },
-        },
+        {},
         {},
         { sort: { timeCreated: 1 } }
     ).toArray();
@@ -22,6 +20,8 @@ const getActivities = async (_, res) => {
     });
 };
 
+// UNUSED
+// get a single activity from database
 // const getOneActivity = async (req, res) => {
 //     const activity = await ActivitiesCollection.findOne({
 //         _id: new mongoose.Types.ObjectId(req.params.id),
@@ -33,6 +33,7 @@ const getActivities = async (_, res) => {
 //     });
 // };
 
+// create a single activity in database
 const createActivity = async (req, res) => {
     const newActivity = new ActivityModel({
         _id: req.body._id,
@@ -42,9 +43,7 @@ const createActivity = async (req, res) => {
     });
     await ActivitiesCollection.insertOne(newActivity);
     const activities = await ActivitiesCollection.find(
-        {
-            content: { $ne: "test" },
-        },
+        {},
         {},
         { sort: { timeCreated: 1 } }
     ).toArray();
@@ -55,11 +54,13 @@ const createActivity = async (req, res) => {
     });
 };
 
+// update a single activity in database
 const updateActivity = async (req, res) => {
     await ActivitiesCollection.findOneAndUpdate(
         { _id: new mongoose.Types.ObjectId(req.params.id) },
         {
             $set: {
+                timeCreated: req.body.timeCreated,
                 content: req.body.content,
                 done: req.body.done,
             },
@@ -81,6 +82,7 @@ const updateActivity = async (req, res) => {
     );
 };
 
+// delete a single activity from database
 const deleteOneActivity = async (req, res) => {
     await ActivitiesCollection.findOneAndDelete({
         _id: new mongoose.Types.ObjectId(req.params.id),
@@ -91,12 +93,11 @@ const deleteOneActivity = async (req, res) => {
     });
 };
 
+// delete all activitites from database
 const deleteAllActivities = async (_, res) => {
-    await ActivitiesCollection.deleteMany({ content: { $ne: "test" } });
+    await ActivitiesCollection.deleteMany({});
     const activities = await ActivitiesCollection.find(
-        {
-            content: { $ne: "test" },
-        },
+        {},
         {},
         { sort: { timeCreated: 1 } }
     ).toArray();

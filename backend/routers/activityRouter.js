@@ -4,10 +4,9 @@ const activityController = require("../controllers/activityController");
 
 const activityRouter = express.Router();
 
-// long path = {url}/api/activities/
-
 activityRouter.get("/", activityController.getActivities);
 
+// UNUSED
 // activityRouter.get("/:id", activityController.getOneActivity);
 
 activityRouter.post("/create", activityController.createActivity);
