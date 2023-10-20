@@ -12,3 +12,4 @@ This serves as a rough list of when and what I'm thinking/working on for this as
 - Implement backend API server
 - Implement MongoDB database
   - Create database schema
+- Idea: *use VueJS for frontend*
