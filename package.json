@@ -1,0 +1,30 @@
+{
+  "name": "lendela-assessment",
+  "version": "1.0.0",
+  "description": "Technical Assessment for Lendela, involving creating a To-Do list web application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node backend/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cedric0303/lendela-assessment.git"
+  },
+  "author": "Jun Li Chen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Cedric0303/lendela-assessment/issues"
+  },
+  "homepage": "https://github.com/Cedric0303/lendela-assessment#readme",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jest": "^29.7.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "mongoose": "^7.6.3",
+    "prettier": "^3.0.3"
+  }
+}
