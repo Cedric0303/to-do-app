@@ -8,11 +8,13 @@ const activityRouter = express.Router();
 
 activityRouter.get("/", activityController.getActivities);
 
+// activityRouter.get("/:id", activityController.getOneActivity);
+
 activityRouter.post("/create", activityController.createActivity);
 
-activityRouter.post("/update/:id", activityController.updateActivity);
+activityRouter.post("/:id/update", activityController.updateActivity);
 
-activityRouter.get("/delete/:id", activityController.deleteOneActivity);
+activityRouter.get("/:id/delete", activityController.deleteOneActivity);
 
 activityRouter.get("/deleteAll", activityController.deleteAllActivities);
 
