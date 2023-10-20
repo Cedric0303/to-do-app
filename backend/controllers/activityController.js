@@ -4,28 +4,31 @@ const ActivityModel = require("../models/activityModel");
 
 const ActivitiesCollection = db.collection("activities");
 
+// return all activites from database
 const getActivities = async (_, res) => {
-    const activities = await ActivitiesCollection.find({})
-        .sort({ timeCreated: -1 })
-        .toArray();
+    const activities = await ActivitiesCollection.find(
+        {},
+        {},
+        { sort: { timeCreated: 1 } }
+    );
+    res.status(200);
     res.json({
-        message: "Hi",
         activities: activities,
     });
 };
 
-const createActivity = async (req, rew) => {};
+const createActivity = async (req, res) => {};
 
-const updateActivity = async (req, rew) => {};
+const updateActivity = async (req, res) => {};
 
-const deleteOneActivity = async (req, rew) => {};
+const deleteOneActivity = async (req, res) => {};
 
-const deleteAllActivities = async (req, rew) => {};
+const deleteAllActivities = async (req, res) => {};
 
 module.exports = {
     getActivities,
-    // createActivity,
-    // updateActivity,
-    // deleteOneActivity,
-    // deleteAllActivities,
+    createActivity,
+    updateActivity,
+    deleteOneActivity,
+    deleteAllActivities,
 };
