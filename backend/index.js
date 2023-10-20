@@ -19,8 +19,8 @@ app.use(express.static(path.resolve(__dirname, "../client/build")));
 app.use(express.json());
 
 app.get("/", (_, res) => {
+    res.status(200);
     res.json({
-        code: 200,
         message: "Connection to API server successful",
     });
 });
