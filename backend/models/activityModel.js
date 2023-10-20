@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+// Specify format the todo activity stored in database
 const activitySchema = new mongoose.Schema({
     timeCreated: { type: Date, required: true },
     content: { type: String, required: true },

@@ -4,6 +4,8 @@ Technical Assessment for Lendela, involving creating a To-Do list web applicatio
 ## Assumptions
 - Not using branches
   - Since no merging of work from other people, Only working alone on this assessment
+- Only using comments if needed to explain something
+  - Some code are just boilerplate code or self-explanatory (through function/variable names)
 
 ## Rough Changelog
 This serves as a rough list of when and what I'm thinking/working on for this assessment.
