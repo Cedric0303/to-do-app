@@ -4,7 +4,7 @@
   "description": "Technical Assessment for Lendela, involving creating a To-Do list web application",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test-backend": "jest --testEnvironment=node --verbose --maxWorkers=1 --forceExit -- /backend/__test__/",
     "start": "node backend/index.js"
   },
   "repository": {
@@ -26,6 +26,7 @@
     "dotenv": "^16.3.1",
     "jest": "^29.7.0",
     "mongoose": "^7.6.3",
-    "prettier": "^3.0.3"
+    "prettier": "^3.0.3",
+    "supertest": "^6.3.3"
   }
 }

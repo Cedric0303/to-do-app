@@ -18,6 +18,13 @@ app.use(
 app.use(express.static(path.resolve(__dirname, "../client/build")));
 app.use(express.json());
 
+app.get("/", (_, res) => {
+    res.json({
+        code: 200,
+        message: "Connection to API server successful",
+    });
+});
+
 app.use("/api/activities", activityRouter);
 
 app.listen(PORT, () => {
