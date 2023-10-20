@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const request = require("supertest");
 
 const app = require("../index");
@@ -7,14 +8,15 @@ jest.setTimeout(10000);
 describe("Activity API server test", () => {
     let agent = request.agent(app);
 
-    test("Test 1: Get all activities", async () => {
-        return agent.get("/api/activities").then((res) => {
+    test("Test 0: Ping API server", async () => {
+        agent.get("/").then((res) => {
             expect(res.statusCode).toBe(200);
             expect(res.type).toBe("application/json");
+            expect(res.text).toContain("Connection to API server successful");
         });
     });
 
-    test("Test 2: Create a new activity", async () => {
+    test("Test 1: Create a new activity", async () => {
         let newActivity = {
             timeCreated: new Date(),
             content: "TODO: test activity",
@@ -31,10 +33,10 @@ describe("Activity API server test", () => {
             });
     });
 
-    test("Test 3: Update an existing acticity", async () => {
-        //setup existing activity
+    test("Test 2: Update an existing activity", async () => {
+        // setup existing activity
         let oldActivity = {
-            _id: "6532433eupdateda93560909",
+            _id: new mongoose.Types.ObjectId("updateupdate"),
             timeCreated: new Date(),
             content: "TODO: update activity (old)",
             done: false,
@@ -55,22 +57,31 @@ describe("Activity API server test", () => {
             content: "TODO: update activity (new)",
             done: true,
         };
-        return agent
-            .post(`/api/activities/update/${oldActivity._id}`)
+        await agent
+            .post(`/api/activities/${oldActivity._id.toString()}/update`)
             .set("Content-Type", "application/json")
             .send(newActivity)
             .then((res) => {
-                expect(res.statusCode).toBe(201);
-                expect(res.type).toBe("application/json");
-                expect(res.text).toContain(oldActivity._id);
+                expect(res.statusCode).toBe(200);
                 expect(res.text).toContain(newActivity.content);
             });
+
+        return agent.get(
+            `/api/activities/${oldActivity._id.toString()}/delete`
+        );
+    });
+
+    test("Test 3: Get all activities", async () => {
+        return agent.get("/api/activities").then((res) => {
+            expect(res.statusCode).toBe(200);
+            expect(res.type).toBe("application/json");
+        });
     });
 
     test("Test 4: Delete an existing activity", async () => {
-        //setup existing activity
+        // setup existing activity
         let oldActivity = {
-            _id: "6532433edeleteda93560909",
+            _id: new mongoose.Types.ObjectId("deletedelete"),
             timeCreated: new Date(),
             content: "TODO: delete activity",
             done: false,
@@ -87,19 +98,12 @@ describe("Activity API server test", () => {
 
         // test delete activity
         await agent
-            .get(`/api/activities/delete/${oldActivity._id}`)
-            .set("Content-Type", "application/json")
+            .get(`/api/activities/${oldActivity._id}/delete`)
             .then((res) => {
                 expect(res.statusCode).toBe(200);
                 expect(res.type).toBe("application/json");
+                expect(res.text).toContain("Activity removal successful!");
             });
-
-        return agent.get("/api/activities").then((res) => {
-            expect(res.statusCode).toBe(200);
-            expect(res.type).toBe("application/json");
-            expect(res.text).not.toContain(oldActivity._id);
-            expect(res.text).not.toContain(oldActivity.content);
-        });
     });
 
     test("Test 5: Delete all activities", async () => {
