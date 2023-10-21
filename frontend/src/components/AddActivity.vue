@@ -5,8 +5,9 @@ const newActivity = ref("");
 
 const emit = defineEmits(["update"]);
 
-async function submitActivity() {
+async function submitActivity(e) {
     try {
+        e.preventDefault();
         const activityObject = {
             timeCreated: new Date(),
             content: newActivity.value,
@@ -20,6 +21,7 @@ async function submitActivity() {
             },
             body: JSON.stringify(activityObject),
         });
+        e.target.reset();
         emit("update");
     } catch (error) {
         console.error(JSON.stringify(error));
@@ -38,21 +40,18 @@ async function clearActivities() {
 
 <template>
     <div class="inputActivity">
-        <form @submit.prevent="submit">
+        <form v-on:submit="submitActivity">
             <input
                 class="textInput"
                 v-model="newActivity"
                 placeholder="Add a new activity"
             />
-            <button name="clearButton" @click="clearActivities">
-                Clear all
-            </button>
+            <p />
             <div class="submitButtonDiv">
-                <button name="submitButton" @click="submitActivity">
-                    Submit
-                </button>
+                <button type="submit" name="submitButton">Submit</button>
             </div>
         </form>
+        <button name="clearButton" @click="clearActivities">Clear all</button>
     </div>
 </template>
 
