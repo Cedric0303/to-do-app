@@ -25,19 +25,48 @@ async function submitActivity() {
         console.error(JSON.stringify(error));
     }
 }
+
+async function clearActivities() {
+    try {
+        await fetch(import.meta.env.VITE_API_URL + "/api/activities/deleteAll");
+        emit("update");
+    } catch (error) {
+        console.error(JSON.stringify(error));
+    }
+}
 </script>
 
 <template>
     <div class="inputActivity">
         <form @submit.prevent="submit">
             <input
-                id="textInput"
+                class="textInput"
                 v-model="newActivity"
                 placeholder="Add a new activity"
             />
-            <button id="submitButton" @click="submitActivity">Submit</button>
+            <button name="clearButton" @click="clearActivities">
+                Clear all
+            </button>
+            <div class="submitButtonDiv">
+                <button name="submitButton" @click="submitActivity">
+                    Submit
+                </button>
+            </div>
         </form>
     </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.textInput {
+    width: 100%;
+}
+
+.clearButton {
+    background-color: red;
+}
+
+.submitButtonDiv {
+    float: right;
+    text-align: right;
+}
+</style>

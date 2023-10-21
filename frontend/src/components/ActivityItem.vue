@@ -42,21 +42,37 @@ async function updateActivityDone(act) {
 </script>
 
 <template>
-    <div class="ActivityItem">
-        <div class="ActivityDetails">
-            <input
-                type="checkbox"
-                name="checkbox"
-                :checked="activity.done"
-                @click="updateActivityDone(activity)"
-            />
-            <p>{{ activity.content }}</p>
-            <p>{{ new Date(activity.timeCreated).toLocaleString() }}</p>
-            <button id="deleteButton" @click="deleteActivity(activity)">
-                Delete
-            </button>
-        </div>
-    </div>
+    <th
+        id="doneCell"
+        @click="updateActivityDone(activity)"
+        style="cursor: pointer"
+    >
+        <div v-if="activity.done">✅</div>
+    </th>
+    <th id="contentCell">{{ activity.content }}</th>
+    <th id="dateCell">
+        {{ new Date(activity.timeCreated).toLocaleString() }}
+    </th>
+    <th id="optionCell">
+        <button id="editButton" @click="deleteActivity(activity)">Edit</button>
+        <button id="deleteButton" @click="deleteActivity(activity)">
+            Delete
+        </button>
+    </th>
+    <tr class="ActivityItem"></tr>
 </template>
 
-<style scoped></style>
+<style scoped>
+/* #optionCell {
+    text-align: center;
+    justify-content: center;
+} */
+
+#editButton {
+    margin: 0 0.2rem 0 0.2rem;
+}
+
+#deleteButton {
+    margin: 0 0.2rem 0 0.2rem;
+}
+</style>
