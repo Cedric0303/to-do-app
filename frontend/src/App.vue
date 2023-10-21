@@ -6,7 +6,6 @@ import AddActivity from "./components/AddActivity.vue";
 const activitiesArray = ref([]);
 
 async function getActivities() {
-    console.log("Updating activity list");
     try {
         const response = await fetch(
             import.meta.env.VITE_API_URL + "/api/activities"
@@ -29,13 +28,14 @@ onMounted(() => {
 <template>
     <div id="app">
         <div name="View">
-            <p></p>
+            <h1>To Do App</h1>
             <AddActivity @update="getActivities" />
             <ActivitiesTable
                 :activities="activitiesArray"
                 @update="getActivities"
             />
         </div>
+        <footer>Built by Jun Li Chen using MEVN stack</footer>
     </div>
 </template>
 
@@ -44,5 +44,12 @@ onMounted(() => {
 
 .View {
     padding-top: 10rem;
+}
+
+footer {
+    color: grey;
+    position: fixed;
+    bottom: 1%;
+    right: 30%;
 }
 </style>
