@@ -1,30 +1,42 @@
 <script setup>
-defineProps({
+const props = defineProps({
     activity: Object,
 });
 
+import { ref } from "vue";
+
+import EditActivityModal from "./EditActivityModal.vue";
+
+const showModal = ref(false);
+
 const emit = defineEmits(["update"]);
 
-async function deleteActivity(act) {
+function passUpdate() {
+    emit("update");
+}
+
+async function deleteActivity() {
+    await fetch(
+        import.meta.env.VITE_API_URL +
+            `/api/activities/${props.activity._id}/delete`
+    );
     try {
-        await fetch(
-            import.meta.env.VITE_API_URL + `/api/activities/${act._id}/delete`
-        );
         emit("update");
     } catch (error) {
         console.error(JSON.stringify(error));
     }
 }
 
-async function updateActivityDone(act) {
+async function updateActivityDone() {
     try {
         const activityObject = {
-            timeCreated: act.timeCreated,
-            content: act.content,
-            done: !act.done,
+            timeCreated: props.activity.timeCreated,
+            content: props.activity.content,
+            done: !props.activity.done,
         };
         await fetch(
-            import.meta.env.VITE_API_URL + `/api/activities/${act._id}/update`,
+            import.meta.env.VITE_API_URL +
+                `/api/activities/${props.activity._id}/update`,
             {
                 method: "POST",
                 headers: {
@@ -42,11 +54,7 @@ async function updateActivityDone(act) {
 </script>
 
 <template>
-    <th
-        id="doneCell"
-        @click="updateActivityDone(activity)"
-        style="cursor: pointer"
-    >
+    <th id="doneCell" @click="updateActivityDone" style="cursor: pointer">
         <div v-if="activity.done">✅</div>
     </th>
     <th id="contentCell">{{ activity.content }}</th>
@@ -54,20 +62,19 @@ async function updateActivityDone(act) {
         {{ new Date(activity.timeCreated).toLocaleString() }}
     </th>
     <th id="optionCell">
-        <button id="editButton" @click="deleteActivity(activity)">Edit</button>
-        <button id="deleteButton" @click="deleteActivity(activity)">
-            Delete
-        </button>
+        <button id="editButton" @click="showModal = true">Edit</button>
+        <button id="deleteButton" @click="deleteActivity">Delete</button>
     </th>
     <tr class="ActivityItem"></tr>
+    <EditActivityModal
+        :show="showModal"
+        @close="showModal = false"
+        @update="passUpdate"
+        :activity="activity"
+    />
 </template>
 
 <style scoped>
-/* #optionCell {
-    text-align: center;
-    justify-content: center;
-} */
-
 #editButton {
     margin: 0 0.2rem 0 0.2rem;
 }
