@@ -96,15 +96,9 @@ const deleteOneActivity = async (req, res) => {
 // delete all activitites from database
 const deleteAllActivities = async (_, res) => {
     await ActivitiesCollection.deleteMany({});
-    const activities = await ActivitiesCollection.find(
-        {},
-        {},
-        { sort: { timeCreated: 1 } }
-    ).toArray();
     res.status(200);
     res.json({
         message: "Delete all activities successful!",
-        activities: activities,
     });
 };
 
