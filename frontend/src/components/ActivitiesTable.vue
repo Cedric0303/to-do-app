@@ -1,5 +1,5 @@
 <script setup>
-defineProps({
+const props = defineProps({
     activities: Array,
 });
 
@@ -13,7 +13,7 @@ function passUpdate() {
 </script>
 
 <template>
-    <table class="ActivitiesTable">
+    <table class="ActivitiesTable" v-if="props.activities.length > 0">
         <thead>
             <tr>
                 <th>Done</th>
