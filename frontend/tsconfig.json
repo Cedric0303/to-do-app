@@ -1,14 +1,44 @@
-{
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    },
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.vitest.json"
-    }
+{ // red squiggle line here
+"compilerOptions": {
+  "target": "esnext",
+  "module": "esnext",
+  "strict": false,
+  "jsx": "preserve",
+  "importHelpers": true,
+  "moduleResolution": "node",
+  "experimentalDecorators": true,
+  "esModuleInterop": true,
+  "allowSyntheticDefaultImports": true,
+  "sourceMap": true,
+  "baseUrl": ".",
+  "allowJs": true,
+  "types": [
+    "webpack-env",
+    "mocha",
+    "chai",
+    "vuetify",
+    "vite/client"
+  ],
+  "paths": {
+    "@/*": [
+      "src/*"
+    ]
+  },
+  "lib": [
+    "esnext",
+    "dom",
+    "dom.iterable",
+    "scripthost"
   ]
+},
+"include": [
+  "src/**/*.js",
+  "src/**/*.jsx",
+  "src/**/*.vue",
+  "tests/**/*.js",
+  "tests/**/*.jsx"
+],
+"exclude": [
+  "node_modules"
+]
 }

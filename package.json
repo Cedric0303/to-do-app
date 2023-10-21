@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test-backend": "jest --testEnvironment=node --verbose --maxWorkers=1 --forceExit -- /backend/__test__/",
-    "start": "node backend/index.js"
+    "start-backend": "node backend/index.js",
+    "start-frontend": "cd frontend && npm run dev"
   },
   "repository": {
     "type": "git",
