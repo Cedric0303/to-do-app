@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import ActivitiesList from "./components/ActivitiesList.vue";
+import ActivitiesTable from "./components/ActivitiesTable.vue";
 import AddActivity from "./components/AddActivity.vue";
 
 const activitiesArray = ref([]);
@@ -28,9 +28,21 @@ onMounted(() => {
 
 <template>
     <div id="app">
-        <AddActivity @update="getActivities" />
-        <ActivitiesList :activities="activitiesArray" @update="getActivities" />
+        <div name="View">
+            <p></p>
+            <AddActivity @update="getActivities" />
+            <ActivitiesTable
+                :activities="activitiesArray"
+                @update="getActivities"
+            />
+        </div>
     </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+@import url("https://cdn.simplecss.org/simple.min.css");
+
+.View {
+    padding-top: 10rem;
+}
+</style>
