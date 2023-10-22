@@ -8,7 +8,7 @@ cd backend && npm run start
 ```
 ### Start frontend web app
 ```
-cd frontend && npm run start
+cd frontend && npm run dev
 ```
 
 ### Test backend API server
