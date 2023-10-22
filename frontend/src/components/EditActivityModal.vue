@@ -79,22 +79,25 @@ async function submitUpdateActivity(e) {
                                 Reset done status?
                             </label>
                         </div>
-                        <div class="modal-bottom">
-                            <button
-                                class="modal-default-button float-left"
-                                @click="$emit('close')"
-                            >
-                                Cancel
-                            </button>
+                        <div name="editSubmitButton">
                             <button
                                 type="submit"
-                                class="modal-default-button float-right"
+                                class="float-right"
                                 @click="submitUpdateActivity, $emit('close')"
                             >
                                 Submit
                             </button>
                         </div>
                     </form>
+                    <div name="editCancelButton">
+                        <button
+                            name="cancelButton"
+                            class="float-left"
+                            @click="$emit('close')"
+                        >
+                            Cancel
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -150,9 +153,9 @@ async function submitUpdateActivity(e) {
     float: right;
 }
 
-.modal-default-button {
+/* .modal-default-button {
     margin: 0 0.2rem 0 0.2rem;
-}
+} */
 
 .modal-enter-from {
     opacity: 0;

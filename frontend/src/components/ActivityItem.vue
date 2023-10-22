@@ -41,7 +41,7 @@ async function updateActivityDone() {
 </script>
 
 <template>
-    <th @click="updateActivityDone" style="cursor: pointer">
+    <th class="doneCell" @click="updateActivityDone" style="cursor: pointer">
         <div v-if="activity.done">✅</div>
     </th>
     <th>{{ activity.content }}</th>

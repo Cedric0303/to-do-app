@@ -13,11 +13,9 @@ async function clearActivities() {
 </script>
 
 <template>
-    <button name="clearButton" @click="clearActivities">Clear all</button>
+    <div class="clearButton">
+        <button @click="clearActivities">Clear all</button>
+    </div>
 </template>
 
-<style scoped>
-.clearButton {
-    background-color: red;
-}
-</style>
+<style scoped></style>
