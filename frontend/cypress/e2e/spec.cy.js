@@ -16,7 +16,7 @@ describe("E2E test", () => {
         const activityText2 = "Finish E2E testing frontend 0303";
         cy.get(".textInput").type(activityText1);
         cy.get(".submitButton > button").click();
-        cy.wait(500);
+        cy.wait(1000);
         cy.get(".textInput").type(activityText2);
         cy.get(".submitButton > button").click();
         cy.contains(activityText1);
@@ -67,10 +67,10 @@ describe("E2E test", () => {
         for (let i = 0; i < 10; i++) {
             cy.get(".textInput").type(activityText);
             cy.get(".submitButton > button").click();
-            cy.wait(500);
+            cy.wait(1000);
         }
         cy.get(".clearButton > button").click();
-        cy.wait(100);
+        cy.wait(500);
         cy.get("body").not(activityText);
     });
 });
