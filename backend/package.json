@@ -4,7 +4,7 @@
   "description": "Technical Assessment for Lendela, involving creating a To-Do list web application",
   "main": "index.js",
   "scripts": {
-    "test": "jest --testEnvironment=node --verbose --maxWorkers=1 --forceExit -- /src/__test__/",
+    "test": "jest --testEnvironment=node --verbose --maxWorkers=1 --forceExit -- /src/test/",
     "start": "node src/index.js"
   },
   "repository": {
