@@ -15,7 +15,6 @@ const editActivityDone = ref(true);
 const emit = defineEmits(["update", "close"]);
 
 async function submitUpdateActivity(e) {
-    console.log(editActivityContent);
     e.preventDefault();
     try {
         const activityObject = {
@@ -40,7 +39,7 @@ async function submitUpdateActivity(e) {
         e.target.reset();
         emit("update");
     } catch (error) {
-        console.error(JSON.stringify(error));
+        console.error(error);
     }
 }
 </script>
@@ -62,44 +61,37 @@ async function submitUpdateActivity(e) {
                         <div class="editCheckbox">
                             <input
                                 type="checkbox"
-                                id="editTimeCheckbox"
+                                id="timeCheckbox"
                                 v-model="editActivityTime"
                             />
-                            <label for="editTimeCheckbox"
-                                >Use current time: {{ editActivityTime }}</label
-                            >
+                            <label for="timeCheckbox">
+                                Use current time?
+                            </label>
                         </div>
                         <div class="editCheckbox">
                             <input
                                 type="checkbox"
-                                id="editDoneCheckbox"
+                                id="doneCheckbox"
                                 v-model="editActivityDone"
                             />
-                            <label for="editDoneCheckbox"
-                                >Reset done status:
-                                {{ editActivityDone }}</label
-                            >
+                            <label for="doneCheckbox">
+                                Reset done status?
+                            </label>
                         </div>
                         <div class="modal-bottom">
                             <button
-                                name="clearButton"
                                 class="modal-default-button float-left"
                                 @click="$emit('close')"
                             >
                                 Cancel
                             </button>
-                            <div class="submitButtonDiv">
-                                <button
-                                    type="submit"
-                                    class="modal-default-button float-right"
-                                    name="submitButton"
-                                    @click="
-                                        submitUpdateActivity, $emit('close')
-                                    "
-                                >
-                                    Submit
-                                </button>
-                            </div>
+                            <button
+                                type="submit"
+                                class="modal-default-button float-right"
+                                @click="submitUpdateActivity, $emit('close')"
+                            >
+                                Submit
+                            </button>
                         </div>
                     </form>
                 </div>

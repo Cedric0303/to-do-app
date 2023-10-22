@@ -23,7 +23,7 @@ async function deleteActivity() {
     try {
         emit("update");
     } catch (error) {
-        console.error(JSON.stringify(error));
+        console.error(error);
     }
 }
 
@@ -48,24 +48,23 @@ async function updateActivityDone() {
         );
         emit("update");
     } catch (error) {
-        console.error(JSON.stringify(error));
+        console.error(error);
     }
 }
 </script>
 
 <template>
-    <th id="doneCell" @click="updateActivityDone" style="cursor: pointer">
+    <th @click="updateActivityDone" style="cursor: pointer">
         <div v-if="activity.done">✅</div>
     </th>
-    <th id="contentCell">{{ activity.content }}</th>
-    <th id="dateCell">
+    <th>{{ activity.content }}</th>
+    <th>
         {{ new Date(activity.timeCreated).toLocaleString() }}
     </th>
-    <th id="optionCell">
-        <button id="editButton" @click="showModal = true">Edit</button>
-        <button id="deleteButton" @click="deleteActivity">Delete</button>
+    <th>
+        <button class="editButton" @click="showModal = true">Edit</button>
+        <button class="deleteButton" @click="deleteActivity">Delete</button>
     </th>
-    <tr class="ActivityItem"></tr>
     <EditActivityModal
         :show="showModal"
         @close="showModal = false"
@@ -75,11 +74,11 @@ async function updateActivityDone() {
 </template>
 
 <style scoped>
-#editButton {
+.editButton {
     margin: 0 0.2rem 0 0.2rem;
 }
 
-#deleteButton {
+.deleteButton {
     margin: 0 0.2rem 0 0.2rem;
 }
 </style>

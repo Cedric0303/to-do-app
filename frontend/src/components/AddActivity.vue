@@ -24,34 +24,24 @@ async function submitActivity(e) {
         e.target.reset();
         emit("update");
     } catch (error) {
-        console.error(JSON.stringify(error));
-    }
-}
-
-async function clearActivities() {
-    try {
-        await fetch(import.meta.env.VITE_API_URL + "/api/activities/deleteAll");
-        emit("update");
-    } catch (error) {
-        console.error(JSON.stringify(error));
+        console.error(error);
     }
 }
 </script>
 
 <template>
-    <div class="inputActivity">
+    <div>
         <form v-on:submit="submitActivity">
             <input
                 class="textInput"
                 v-model="newActivity"
-                placeholder="Add a new activity"
+                placeholder="Add a new to-do activity..."
             />
             <p />
-            <div class="submitButtonDiv">
-                <button type="submit" name="submitButton">Submit</button>
+            <div class="submitButton">
+                <button type="submit">Submit</button>
             </div>
         </form>
-        <button name="clearButton" @click="clearActivities">Clear all</button>
     </div>
 </template>
 
@@ -60,11 +50,7 @@ async function clearActivities() {
     width: 100%;
 }
 
-.clearButton {
-    background-color: red;
-}
-
-.submitButtonDiv {
+.submitButton {
     float: right;
     text-align: right;
 }

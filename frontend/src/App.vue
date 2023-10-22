@@ -2,6 +2,7 @@
 import { ref, onMounted } from "vue";
 import ActivitiesTable from "./components/ActivitiesTable.vue";
 import AddActivity from "./components/AddActivity.vue";
+import ClearAllActivities from "./components/ClearAllActivities.vue";
 
 const activitiesArray = ref([]);
 
@@ -11,12 +12,9 @@ async function getActivities() {
             import.meta.env.VITE_API_URL + "/api/activities"
         );
         const data = await response.json();
-        data.activities.sort((a, b) => {
-            return a.timeCreated - b.timeCreated;
-        });
         activitiesArray.value = data.activities;
     } catch (error) {
-        console.error(JSON.stringify(error));
+        console.error(error);
     }
 }
 
@@ -30,6 +28,7 @@ onMounted(() => {
         <div name="View">
             <h1>To Do App</h1>
             <AddActivity @update="getActivities" />
+            <ClearAllActivities @update="getActivities" />
             <ActivitiesTable
                 :activities="activitiesArray"
                 @update="getActivities"
@@ -51,5 +50,6 @@ footer {
     position: fixed;
     bottom: 1%;
     right: 30%;
+    font-size: small;
 }
 </style>
