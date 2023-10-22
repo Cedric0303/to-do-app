@@ -4,22 +4,26 @@ Technical assessment for Lendela, involving creating a to-do list web applicatio
 ## User Guide
 ### Start backend API server
 ```
-cd backend && npm run start
+cd backend
+npm run start
 ```
 ### Start frontend web app
 ```
-cd frontend && npm run dev
+cd frontend
+npm run dev
 ```
 
 ### Test backend API server
 - **Note**: Backend API server do **NOT** need to be started to run the test
 ```
-cd backend && npm run test
+cd backend
+npm run test
 ```
 ### Test frontend web app
 - **Important**: Both backend API server and frontend web app **NEED** to be started to run the test
 ```
-cd frontend && npm run test
+cd frontend
+npm run test
 ```
 
 
