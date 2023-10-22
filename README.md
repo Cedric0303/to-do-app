@@ -19,3 +19,7 @@ This serves as a rough log of when and what I'm thinking/working on for this ass
 - Idea: *use VueJS for frontend*
 
 ### Day 2 (21/10/2023)
+- Start implementation of frontend web app
+- Found simplecss to bootstrap styling
+- Revert from using typescript to javascript
+- Restructure backend config files
