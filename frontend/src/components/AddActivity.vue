@@ -3,29 +3,34 @@ import { ref } from "vue";
 
 const newActivity = ref("");
 
-const emit = defineEmits(["update"]);
+const emit = defineEmits(["update", "empty"]);
 
 async function submitActivity(e) {
-    try {
-        e.preventDefault();
-        const activityObject = {
-            timeCreated: new Date(),
-            content: newActivity.value,
-            done: false,
-        };
-        await fetch(import.meta.env.VITE_API_URL + "/api/activities/create", {
-            method: "POST",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(activityObject),
-        });
-        e.target.reset();
-        emit("update");
-    } catch (error) {
-        console.error(error);
-    }
+    e.preventDefault();
+    if (!newActivity.value.length) emit("empty");
+    else
+        try {
+            const activityObject = {
+                timeCreated: new Date(),
+                content: newActivity.value,
+                done: false,
+            };
+            await fetch(
+                import.meta.env.VITE_API_URL + "/api/activities/create",
+                {
+                    method: "POST",
+                    headers: {
+                        Accept: "application/json",
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(activityObject),
+                }
+            );
+            newActivity.value = "";
+            emit("update");
+        } catch (error) {
+            console.error(error);
+        }
 }
 </script>
 

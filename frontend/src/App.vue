@@ -1,10 +1,13 @@
 <script setup>
 import { ref, onMounted } from "vue";
+
 import ActivitiesTable from "./components/ActivitiesTable.vue";
 import AddActivity from "./components/AddActivity.vue";
 import ClearAllActivities from "./components/ClearAllActivities.vue";
+import EmptyActivityError from "./components/EmptyActivityError.vue";
 
 const activitiesArray = ref([]);
+const emptyActivityText = ref(false);
 
 async function getActivities() {
     try {
@@ -13,6 +16,7 @@ async function getActivities() {
         );
         const data = await response.json();
         activitiesArray.value = data.activities;
+        emptyActivityText.value = false;
     } catch (error) {
         console.error(error);
     }
@@ -27,8 +31,12 @@ onMounted(() => {
     <div id="app">
         <div name="View">
             <h1>To Do App</h1>
-            <AddActivity @update="getActivities" />
+            <AddActivity
+                @update="getActivities"
+                @empty="emptyActivityText = true"
+            />
             <ClearAllActivities @update="getActivities" />
+            <EmptyActivityError v-if="emptyActivityText" />
             <ActivitiesTable
                 :activities="activitiesArray"
                 @update="getActivities"
