@@ -8,10 +8,12 @@ import EditActivityButton from "./EditActivityButton.vue";
 
 const emit = defineEmits(["update"]);
 
+// pass emitters to parent component
 function passUpdate() {
     emit("update");
 }
 
+// handle toggling activity's done state and send to backend API server
 async function updateActivityDone() {
     try {
         const activityObject = {

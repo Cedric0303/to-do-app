@@ -1,6 +1,7 @@
 <script setup>
 const emit = defineEmits(["update"]);
 
+// remove all stored activities
 async function clearActivities() {
     try {
         await fetch(import.meta.env.VITE_API_URL + "/api/activities/deleteAll");

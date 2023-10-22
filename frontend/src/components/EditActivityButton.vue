@@ -11,6 +11,7 @@ const showModal = ref(false);
 
 const emit = defineEmits(["update"]);
 
+// pass emitters to parent component
 function passUpdate() {
     emit("update");
 }

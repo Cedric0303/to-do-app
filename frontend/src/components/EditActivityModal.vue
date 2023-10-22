@@ -14,6 +14,7 @@ const editActivityDone = ref(true);
 
 const emit = defineEmits(["update", "close"]);
 
+// handle activity update and send to backend API server
 async function submitUpdateActivity(e) {
     e.preventDefault();
     try {

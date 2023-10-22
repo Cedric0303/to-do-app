@@ -7,6 +7,7 @@ import ActivityItem from "./ActivityItem.vue";
 
 const emit = defineEmits(["update"]);
 
+// pass emitters to parent component
 function passUpdate() {
     emit("update");
 }

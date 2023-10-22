@@ -5,6 +5,7 @@ const props = defineProps({
 
 const emit = defineEmits(["update"]);
 
+// remove a single activity stored in database
 async function deleteActivity() {
     await fetch(
         import.meta.env.VITE_API_URL +

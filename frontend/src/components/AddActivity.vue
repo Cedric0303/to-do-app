@@ -5,6 +5,7 @@ const newActivity = ref("");
 
 const emit = defineEmits(["update", "empty"]);
 
+// handle activity text input and send to backend API server
 async function submitActivity(e) {
     e.preventDefault();
     if (!newActivity.value.length) emit("empty");
