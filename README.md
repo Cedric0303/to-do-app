@@ -5,14 +5,18 @@ Technical assessment for Lendela, involving creating a to-do list web applicatio
 - [User Guide](#user-guide)
   - [Install dependencies](#install-dependencies)
   - [Start backend API server](#start-backend-api-server)
-  - [Start frontend web app](#start-frontend-web-app)
   - [Test backend API server](#test-backend-api-server)
+  - [Start frontend web app](#start-frontend-web-app)
   - [Test frontend web app](#test-frontend-web-app)
 - [Assumptions](#assumptions)
+- [Database schema](#database-schema)
+- [Backend API routes](#backend-api-routes)
 - [Rough Log](#rough-log)
   - [Day 1 (20/10/2023)](#day-1-20102023)
   - [Day 2 (21/10/2023)](#day-2-21102023)
   - [Day 3 (22/10/2023)](#day-3-22102023)
+  - [Day 4 (23/10/2023)](#day-4-23102023)
+
 
 # User Guide
 
