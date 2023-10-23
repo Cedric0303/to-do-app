@@ -8,11 +8,13 @@ describe("E2E test", () => {
         const activityText = "Finish testing frontend 0303";
         cy.get(".textInput").type(activityText);
         cy.get(".submitButton > button").click();
+        cy.wait(1000);
         cy.contains(activityText);
     });
 
     it("Test 2: Add empty activity", () => {
         cy.get(".submitButton > button").click();
+        cy.wait(1000);
         cy.get(".errorMessage");
     });
 
@@ -25,6 +27,7 @@ describe("E2E test", () => {
         cy.wait(1000);
         cy.get(".textInput").type(activityText2);
         cy.get(".submitButton > button").click();
+        cy.wait(1000);
         cy.contains(activityText1);
         cy.contains(activityText2);
     });
@@ -33,11 +36,13 @@ describe("E2E test", () => {
         const activityText = "Toggle activity done state 0303";
         cy.get(".textInput").type(activityText);
         cy.get(".submitButton > button").click();
-        cy.wait(500);
+        cy.wait(1000);
         cy.get(".doneCell").click();
+        cy.wait(1000);
         cy.get(".doneCell").contains("✅");
-        cy.wait(500);
+        cy.wait(1000);
         cy.get(".doneCell").click();
+        cy.wait(1000);
         cy.get(".doneCell").not("✅");
     });
 
@@ -45,8 +50,9 @@ describe("E2E test", () => {
         const activityText = "Delete activity 0303";
         cy.get(".textInput").type(activityText);
         cy.get(".submitButton > button").click();
-        cy.wait(500);
+        cy.wait(1000);
         cy.get(".deleteButton").click();
+        cy.wait(1000);
         cy.get("body").not("Delete activity");
     });
 
@@ -57,16 +63,18 @@ describe("E2E test", () => {
         const cancelText = "Should I edit again? 0303";
         cy.get(".textInput").type(activityText);
         cy.get(".submitButton > button").click();
-        cy.wait(500);
+        cy.wait(1000);
         cy.get(".editButton").click();
         cy.get(".modal-body > form > .textInput").clear().type(editText);
         cy.get("#timeCheckbox").click();
         cy.get(".float-right").click();
+        cy.wait(1000);
         cy.contains(editText);
-        cy.wait(500);
+        cy.wait(1000);
         cy.get(".editButton").click();
         cy.get(".modal-body > form > .textInput").clear().type(cancelText);
         cy.get(".float-left").click();
+        cy.wait(1000);
         cy.contains(editText);
     });
 
@@ -79,7 +87,7 @@ describe("E2E test", () => {
             cy.wait(1000);
         }
         cy.get(".clearButton > button").click();
-        cy.wait(500);
+        cy.wait(1000);
         cy.get("body").not(activityText);
     });
 });
