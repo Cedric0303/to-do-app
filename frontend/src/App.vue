@@ -16,7 +16,6 @@ async function getActivities() {
         );
         const data = await response.json();
         activitiesArray.value = data.activities;
-        emptyActivityText.value = false;
     } catch (error) {
         console.error(error);
     }
