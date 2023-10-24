@@ -1,5 +1,5 @@
 # Lendela assessment
-Technical assessment for Lendela, involving creating a to-do list web application
+Technical assessment involving creating a to-do list web application
 
 - [Lendela assessment](#lendela-assessment)
 - [User Guide](#user-guide)
