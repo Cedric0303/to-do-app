@@ -1,7 +1,10 @@
-# Lendela assessment
-Technical assessment involving creating a to-do list web application
+# To-do list web application
+- Technical assessment involving creating a to-do list web application
+- Developed using MEVN stack
 
-- [Lendela assessment](#lendela-assessment)
+# Table of Content
+- [To-do list web application](#to-do-list-web-application)
+- [Table of Content](#table-of-content)
 - [User Guide](#user-guide)
   - [Install dependencies](#install-dependencies)
   - [Start backend API server](#start-backend-api-server)
@@ -16,7 +19,6 @@ Technical assessment involving creating a to-do list web application
   - [Day 2 (21/10/2023)](#day-2-21102023)
   - [Day 3 (22/10/2023)](#day-3-22102023)
   - [Day 4 (23/10/2023)](#day-4-23102023)
-
 
 # User Guide
 
