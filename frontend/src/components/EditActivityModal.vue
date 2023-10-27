@@ -127,6 +127,7 @@ async function submitUpdateActivity(e) {
 }
 
 .modal-container {
+    color: white;
     width: 50%;
     height: 50%;
     margin: auto;
