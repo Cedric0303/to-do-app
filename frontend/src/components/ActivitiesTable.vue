@@ -19,7 +19,7 @@ function passUpdate() {
             <tr>
                 <th>Done</th>
                 <th>Content</th>
-                <th>Time Created</th>
+                <!-- <th>Time Created</th> -->
                 <th>Option</th>
             </tr>
         </thead>

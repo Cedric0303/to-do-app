@@ -44,10 +44,10 @@ async function updateActivityDone() {
     <th class="doneCell" @click="updateActivityDone" style="cursor: pointer">
         <div v-if="activity.done">✅</div>
     </th>
-    <th>{{ activity.content }}</th>
-    <th>
+    <th class ="wide">{{ activity.content }}</th>
+    <!-- <th>
         {{ new Date(activity.timeCreated).toLocaleString() }}
-    </th>
+    </th> -->
     <th>
         <EditActivityButton :activity="activity" @update="passUpdate" />
         <DeleteActivityButton :activity="activity" @update="passUpdate" />
@@ -57,5 +57,9 @@ async function updateActivityDone() {
 <style scoped>
 .editButton {
     margin: 0 0.2rem 0 0.2rem;
+}
+
+.wide {
+    
 }
 </style>

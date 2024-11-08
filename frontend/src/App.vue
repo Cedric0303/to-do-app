@@ -41,7 +41,7 @@ onMounted(() => {
                 @update="getActivities"
             />
         </div>
-        <footer>Built by Jun Li Chen using MEVN stack</footer>
+        <footer>Bun supremacy</footer>
     </div>
 </template>
 

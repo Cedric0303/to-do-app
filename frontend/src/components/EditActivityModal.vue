@@ -59,7 +59,7 @@ async function submitUpdateActivity(e) {
                             class="textInput"
                             v-model="editActivityContent"
                         />
-                        <div class="editCheckbox">
+                        <!-- <div class="editCheckbox">
                             <input
                                 type="checkbox"
                                 id="timeCheckbox"
@@ -68,7 +68,7 @@ async function submitUpdateActivity(e) {
                             <label for="timeCheckbox">
                                 Use current time?
                             </label>
-                        </div>
+                        </div> -->
                         <div class="editCheckbox">
                             <input
                                 type="checkbox"
