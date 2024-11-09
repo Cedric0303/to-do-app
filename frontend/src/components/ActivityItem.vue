@@ -50,16 +50,12 @@ async function updateActivityDone() {
     </th> -->
     <th>
         <EditActivityButton :activity="activity" @update="passUpdate" />
-        <DeleteActivityButton :activity="activity" @update="passUpdate" />
+        <!-- <DeleteActivityButton :activity="activity" @update="passUpdate" /> -->
     </th>
 </template>
 
 <style scoped>
 .editButton {
     margin: 0 0.2rem 0 0.2rem;
-}
-
-.wide {
-    
 }
 </style>

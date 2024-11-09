@@ -34,7 +34,7 @@ onMounted(() => {
                 @update="getActivities"
                 @empty="emptyActivityText = true"
             />
-            <ClearAllActivities @update="getActivities" />
+            <!-- <ClearAllActivities @update="getActivities" /> -->
             <EmptyActivityError v-if="emptyActivityText" />
             <ActivitiesTable
                 :activities="activitiesArray"

@@ -55,7 +55,7 @@ async function submitUpdateActivity(e) {
 
                 <div class="modal-body">
                     <form v-on:submit="submitUpdateActivity">
-                        <input
+                        <textarea
                             class="textInput"
                             v-model="editActivityContent"
                         />
@@ -69,7 +69,7 @@ async function submitUpdateActivity(e) {
                                 Use current time?
                             </label>
                         </div> -->
-                        <div class="editCheckbox">
+                        <!-- <div class="editCheckbox">
                             <input
                                 type="checkbox"
                                 id="doneCheckbox"
@@ -78,7 +78,7 @@ async function submitUpdateActivity(e) {
                             <label for="doneCheckbox">
                                 Reset done status?
                             </label>
-                        </div>
+                        </div> -->
                         <div name="editSubmitButton">
                             <button
                                 type="submit"
@@ -107,6 +107,7 @@ async function submitUpdateActivity(e) {
 <style>
 .textInput {
     width: 100%;
+    height: 10vh;
 }
 
 .editCheckbox {
