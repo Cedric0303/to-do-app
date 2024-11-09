@@ -105,9 +105,14 @@ async function submitUpdateActivity(e) {
 </template>
 
 <style>
+
+textarea {
+    width: 100% !important;
+    height: 10vh !important;
+}
+
 .textInput {
     width: 100%;
-    height: 10vh;
 }
 
 .editCheckbox {

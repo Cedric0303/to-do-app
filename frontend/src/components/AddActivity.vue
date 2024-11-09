@@ -39,7 +39,7 @@ async function submitActivity(e) {
     <div>
         <form v-on:submit="submitActivity">
             <input
-                class="textInput2"
+                class="textInput"
                 v-model="newActivity"
                 placeholder="Add a new to-do activity..."
             />
@@ -52,7 +52,7 @@ async function submitActivity(e) {
 </template>
 
 <style scoped>
-.textInput2 {
+.textInput {
     width: 100%;
 }
 
