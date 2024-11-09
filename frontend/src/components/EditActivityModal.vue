@@ -104,7 +104,7 @@ async function submitUpdateActivity(e) {
     </Transition>
 </template>
 
-<style scoped>
+<style>
 .textInput {
     width: 100%;
     height: 10vh;
